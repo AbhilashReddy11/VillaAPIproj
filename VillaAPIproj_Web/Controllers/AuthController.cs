@@ -6,8 +6,9 @@ using System.Security.Claims;
 using VillaAPI_Utility;
 using VillaAPI_Web.Models.Dto;
 using VillaAPI_Web.Models;
-using VillaAPI_Web.Models.Dto;
+
 using VillaAPI_Web.Services.IServices;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace VillaAPI_Web.Controllers
 {
@@ -34,12 +35,20 @@ namespace VillaAPI_Web.Controllers
             APIResponse response = await _authService.LoginAsync<APIResponse>(obj);
 			if(response !=null && response.IsSuccess)
 			{
-			
-				LoginResponseDTO model = JsonConvert.DeserializeObject<LoginResponseDTO>(Convert.ToString(response.Result));
-				var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-				identity.AddClaim(new Claim(ClaimTypes.Name,model.User.UserName));
-                identity.AddClaim(new Claim(ClaimTypes.Role, model.User.Role));
-				var principal=new ClaimsPrincipal(identity);
+
+                
+
+                
+                LoginResponseDTO model = JsonConvert.DeserializeObject<LoginResponseDTO>(Convert.ToString(response.Result));
+
+                var handler = new JwtSecurityTokenHandler();
+                var jwt = handler.ReadJwtToken(model.Token);
+
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                identity.AddClaim(new Claim(ClaimTypes.Name, model.User.UserName));
+                identity.AddClaim(new Claim(ClaimTypes.Role, jwt.Claims.FirstOrDefault(u => u.Type == "role").Value));
+                var principal = new ClaimsPrincipal(identity);
+                
 				await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principal);
 
                 HttpContext.Session.SetString(SD.SessionToken, model.Token);

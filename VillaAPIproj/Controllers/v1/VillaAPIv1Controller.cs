@@ -51,7 +51,7 @@ namespace VillaAPI.Controllers.v1
                 }
                 else
                 {
-                    villaList = await _dbVilla.GetAllAsync();
+                    villaList = await _dbVilla.GetAllAsync(pageSize: pageSize, pageNumber: pageNumber);
 
                 }
                 if (!string.IsNullOrEmpty(search))

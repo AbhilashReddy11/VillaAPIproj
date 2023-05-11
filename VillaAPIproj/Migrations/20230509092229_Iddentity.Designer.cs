@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VillaAPI.Data;
 
@@ -11,9 +12,11 @@ using VillaAPI.Data;
 namespace VillaAPIproj.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230509092229_Iddentity")]
+    partial class Iddentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,6 +174,10 @@ namespace VillaAPIproj.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -228,7 +235,7 @@ namespace VillaAPIproj.Migrations
                         {
                             Id = 1,
                             Amenity = "qwertyu",
-                            CreatedDate = new DateTime(2023, 5, 10, 12, 43, 28, 772, DateTimeKind.Local).AddTicks(5111),
+                            CreatedDate = new DateTime(2023, 5, 9, 14, 52, 28, 570, DateTimeKind.Local).AddTicks(7338),
                             Details = "awsedrtfuikolkmj dxujhsgfgvbhkm rdgyuhijogf",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa3.jpg",
                             Name = "one Villa",
@@ -241,7 +248,7 @@ namespace VillaAPIproj.Migrations
                         {
                             Id = 2,
                             Amenity = "oiuyt",
-                            CreatedDate = new DateTime(2023, 5, 10, 12, 43, 28, 772, DateTimeKind.Local).AddTicks(5128),
+                            CreatedDate = new DateTime(2023, 5, 9, 14, 52, 28, 570, DateTimeKind.Local).AddTicks(7356),
                             Details = "sedrftgyhuj oiujytdrf poiuytrsdcfgvhbjnmk ftgyuhj",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa1.jpg",
                             Name = "two Villa",
@@ -254,7 +261,7 @@ namespace VillaAPIproj.Migrations
                         {
                             Id = 3,
                             Amenity = "fghkj",
-                            CreatedDate = new DateTime(2023, 5, 10, 12, 43, 28, 772, DateTimeKind.Local).AddTicks(5131),
+                            CreatedDate = new DateTime(2023, 5, 9, 14, 52, 28, 570, DateTimeKind.Local).AddTicks(7359),
                             Details = "wertyuhj lkjhgfd poiuytrdsx kjhgfd",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa4.jpg",
                             Name = "three Villa",
@@ -267,7 +274,7 @@ namespace VillaAPIproj.Migrations
                         {
                             Id = 4,
                             Amenity = "dfgjhgjh",
-                            CreatedDate = new DateTime(2023, 5, 10, 12, 43, 28, 772, DateTimeKind.Local).AddTicks(5134),
+                            CreatedDate = new DateTime(2023, 5, 9, 14, 52, 28, 570, DateTimeKind.Local).AddTicks(7361),
                             Details = "sdfgkjhgfd iuytrdf sdfyujk lokjhgfd",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa5.jpg",
                             Name = "four Villa",
@@ -280,7 +287,7 @@ namespace VillaAPIproj.Migrations
                         {
                             Id = 5,
                             Amenity = "ertyui",
-                            CreatedDate = new DateTime(2023, 5, 10, 12, 43, 28, 772, DateTimeKind.Local).AddTicks(5137),
+                            CreatedDate = new DateTime(2023, 5, 9, 14, 52, 28, 570, DateTimeKind.Local).AddTicks(7363),
                             Details = "qwertyuiolkj sdfghjkl lkiuytredxcvbnm sdfghjkkkmnbvcd",
                             ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa2.jpg",
                             Name = "five Villa",

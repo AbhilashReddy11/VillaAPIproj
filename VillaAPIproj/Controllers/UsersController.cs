@@ -35,7 +35,7 @@ namespace VillaAPI.Controllers
             _response.Result = LoginResponse;
             return Ok(_response);
         }
-        [HttpPost("registration")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistrationRequestDTO model)
         {
             bool ifUserNameUnique = _userRepo.IsUniqueUser(model.UserName);

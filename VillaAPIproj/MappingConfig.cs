@@ -1,6 +1,8 @@
 ﻿using VillaAPI.Models.DTO;
 using VillaAPI.Models;
 using AutoMapper;
+using VillaAPIproj.Models;
+using VillaAPIproj.Models.DTO;
 
 namespace VillaAPI
 {
@@ -16,6 +18,7 @@ namespace VillaAPI
             CreateMap<VillaNumber, VillaNumberDTO>().ReverseMap();
             CreateMap<VillaNumber, VillaNumberCreateDTO>().ReverseMap();
             CreateMap<VillaNumber, VillaNumberUpdateDTO>().ReverseMap();
+            CreateMap<ApplicationUser, UserDTO>().ReverseMap();
 
         }
     }
